@@ -1,0 +1,51 @@
+<%- include('header.ejs') %>
+
+    <div class="container mt-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Edit Contact</h4>
+                <a href="/" class="btn btn-light btn-sm">Back to Contacts</a>
+            </div>
+
+            <div class="card-body">
+                <% if (contact) { %>
+                    <form action="/update-contact/<%= contact._id %>" method="POST">
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name"
+                                value="<%= contact.first_name %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name"
+                                value="<%= contact.last_name %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="<%= contact.email %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone:</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" value="<%= contact.phone %>"
+                                required>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-warning">Update</button>
+                            <a href="/" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                    <% } else { %>
+                        <div class="alert alert-danger" role="alert">
+                            Contact not found.
+                        </div>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer.ejs') %>
